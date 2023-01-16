@@ -15,20 +15,26 @@ public class Main {
         employees[8] = new Employee("Мошкин Кирил Владимирович", 4, 60_000);
         employees[9] = new Employee("Дятлов Петр Петрович", 5, 89_000);
 
-        /*
-         * Получить список всех сотрудников со всеми имеющимися по ним данными
-         * (вывести в консоль значения всех полей (toString))
-         */
+        getAllData();
+        findMinSalary();
+        findMaxSalary();
+
+        System.out.println("Сумма затрат на зарплаты в месяц: " + salaryPerMonth());
+
+        System.out.println("Среднее значение зарплат " + countAverage());
+
+        getStaff();
+
+    }
+
+    /*
+     * Получить список всех сотрудников со всеми имеющимися по ним данными
+     * (вывести в консоль значения всех полей (toString))
+     */
+    public static void getAllData() {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
-
-        System.out.println("Сумма затрат на зарплаты в месяц: " + salaryPerMonth());
-        System.out.println("Сотрудник с минимальной зарплатой " + findMinSalary());
-        System.out.println("Сотрудник с максимальной зарплатой " + findMaxSalary());
-        System.out.println("Среднее значение зарплат " + countAverage());
-        getStaff();
-
     }
 
     /*
@@ -45,27 +51,32 @@ public class Main {
     /*
      *  Найти сотрудника с минимальной зарплатой
      */
-    public static int findMinSalary() {
+    public static void findMinSalary() {
         int minValue = Integer.MAX_VALUE;
-        for (Employee employee : employees) {
-            if (employee.getSalary() < minValue) {
-                minValue = employee.getSalary();
+        Employee employee = employees[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary()<minValue){
+                minValue = employees[i].getSalary();
+                employee = employees[i];
             }
         }
-        return minValue;
+        System.out.println("Сотрудник " + employee.getName() + " минимальная заработная плата " + employee.getSalary());
     }
 
     /*
      * Найти сотрудника с максимальной зарплатой
      */
-    public static int findMaxSalary() {
+    public static void findMaxSalary() {
         int maxValue = Integer.MIN_VALUE;
-        for (Employee employee : employees) {
-            if (employee.getSalary() > maxValue) {
-                maxValue = employee.getSalary();
+        Employee employee = employees[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary()>maxValue){
+                maxValue = employees[i].getSalary();
+                employee = employees[i];
             }
         }
-        return maxValue;
+        System.out.println("Сотрудник " + employee.getName() + " максимальная заработная плата " + employee.getSalary());
+
     }
 
     /*
