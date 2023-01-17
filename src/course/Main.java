@@ -24,7 +24,6 @@ public class Main {
         System.out.println("Среднее значение зарплат " + countAverage());
 
         getStaff();
-
     }
 
     /*
@@ -83,7 +82,6 @@ public class Main {
      * Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b)
      */
     public static double countAverage() {
-        ;
         double count = salaryPerMonth() / employees.length;
         return count;
     }
@@ -96,4 +94,5 @@ public class Main {
             System.out.println(employee.getName());
         }
     }
+
 }
