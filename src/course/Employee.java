@@ -1,9 +1,11 @@
 package course;
 
+import java.util.Objects;
+
 public class Employee {
     private final String name;
     private int department;
-    private int salary;
+    private double salary;
     static int counter = 1;
     private final int id;
 
@@ -22,7 +24,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -38,7 +40,7 @@ public class Employee {
         this.department = department;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -46,4 +48,18 @@ public class Employee {
     public String toString() {
         return "Ф.И.О " + getName() + " Отдел " + getDepartment() + " Заработная плата " + getSalary() + " ID " + getId();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && Double.compare(employee.salary, salary) == 0 && id == employee.id && Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, department, salary, id);
+    }
 }
+
